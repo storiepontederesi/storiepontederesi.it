@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Storie Pontederesi — Lo spazio per chi ama Pontedera</title>
+  <title>Storie Pontederesi - Lo spazio per chi ama Pontedera</title>
   <meta name="description" content="Storie Pontederesi è lo strumento per vivere meglio e con più consapevolezza i posti in cui viviamo. Newsletter, giochi, community e molto altro su Pontedera.">
   <meta property="og:title" content="Storie Pontederesi">
   <meta property="og:description" content="Lo spazio per riscoprire la storia, raccontare il presente e immaginare il futuro di Pontedera.">
@@ -191,6 +191,30 @@
     .chi-visual blockquote {
       font-family: 'Playfair Display', serif; font-style: italic;
       font-size: clamp(18px, 2.5vw, 24px); color: var(--granata); line-height: 1.5;
+    }
+
+    /* ── MANIFESTO BAND ── */
+    .manifesto-band {
+      background: var(--granata-scuro); padding: 5rem 2rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .manifesto-band::before {
+      content: '\201C';
+      position: absolute; top: -0.2em; left: 50%; transform: translateX(-50%);
+      font-family: 'Playfair Display', serif; font-size: 18rem;
+      color: rgba(255,255,255,.04); line-height: 1; pointer-events: none;
+    }
+    .manifesto-band .section-label { color: rgba(255,255,255,.55); }
+    .manifesto-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 46px); font-weight: 900;
+      color: var(--bianco); line-height: 1.2; margin-bottom: 1.4rem;
+    }
+    .manifesto-band h2 em { font-style: italic; color: var(--crema); }
+    .manifesto-quote {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(16px, 2vw, 21px); color: rgba(255,255,255,.75);
+      max-width: 620px; margin: 0 auto; line-height: 1.7;
     }
 
     /* ── COSA FACCIAMO ── */
@@ -394,7 +418,7 @@
   <div class="hero-content">
     <img src="grafiche/logo-bianco.png" alt="Storie Pontederesi">
     <h1>Lo spazio per chi<br><em>ama Pontedera</em></h1>
-    <p>Riscoprire la storia, raccontare il presente e immaginare il futuro di Pontedera — insieme.</p>
+    <p>Riscoprire la storia, raccontare il presente e immaginare il futuro di Pontedera, insieme.</p>
     <div class="hero-btns">
       <a href="https://storiepontederesi.substack.com/subscribe" target="_blank" class="btn-hero-primary">Inizia a conoscere la tua casa</a>
       <a href="#progetti" class="btn-hero-ghost">Scopri i progetti</a>
@@ -409,10 +433,10 @@
     <div class="chi-grid">
       <div class="chi-text">
         <p class="section-label">Chi siamo</p>
-        <h2 class="section-title">Uno strumento per vivere <em>meglio</em> Pontedera</h2>
-        <p>Storie Pontederesi è lo strumento per vivere meglio e con più consapevolezza i posti in cui viviamo.</p>
+        <h2 class="section-title">Per conoscere <em>davvero</em> Pontedera</h2>
+        <p>Raccontiamo Pontedera con curiosità e profondità, per chi vuole capire davvero dove abita. Per offrire un modo diverso di guardare la città.</p>
         <p>Costruiamo una <strong>community di persone che amano Pontedera</strong> e vogliono riscoprire la storia, senza nostalgia ma con occhi critici e curiosi che guardano ai cambiamenti che stanno arrivando.</p>
-        <p>Il nostro lavoro è editoriale e indipendente: nessuno ci dice cosa scrivere, nessuno ci paga per farlo. Solo la passione per una città che merita di essere raccontata meglio.</p>
+        <p>Il nostro lavoro è editoriale e indipendente: nessuno ci dice cosa scrivere. Solo la passione per una città che merita di essere raccontata meglio.</p>
       </div>
       <div class="chi-visual">
         <img src="grafiche/logo.png" alt="Storie Pontederesi">
@@ -421,6 +445,15 @@
     </div>
   </div>
 </section>
+
+<!-- ── MANIFESTO BAND ── -->
+<div class="manifesto-band">
+  <div class="section-inner">
+    <p class="section-label">Perché esistiamo</p>
+    <h2>Vogliamo reinventare<br>il <em>giornalismo locale</em></h2>
+    <p class="manifesto-quote">Il territorio merita di essere raccontato con l'ossessione di chi ci vive. Non per convenienza, per necessità.</p>
+  </div>
+</div>
 
 <!-- ── COSA FACCIAMO ── -->
 <section id="cosa-facciamo">
