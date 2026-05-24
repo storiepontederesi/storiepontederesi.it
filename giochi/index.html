@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/giochi/cruciverba/LogoStoriePontederesi_cruciverba.png">
+  <link rel="apple-touch-icon" href="/giochi/cruciverba/LogoStoriePontederesi_cruciverba.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giochi — Storie Pontederesi</title>
+  <meta name="description" content="I giochi di Storie Pontederesi: il Cruciverba Pontederese e Vesple, il Wordle di Pontedera. Allegati alla newsletter Rotatorie.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Giochi — Storie Pontederesi">
+  <meta property="og:description" content="Il Cruciverba Pontederese e Vesple: i giochi della newsletter Rotatorie.">
+  <meta property="og:image" content="https://storiepontederesi.github.io/cruciverbapontederese/LogoStoriePontederesi_cruciverba.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://giochi.storiepontederesi.it">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rosa:   #f5d0c5;
+      --rosso:  #a40d26;
+      --rosso2: #c41030;
+      --teal:   #5bbfad;
+      --giallo: #f5c842;
+      --testo:  #4a2020;
+      --card-bg:#fff4f0;
+    }
+
+    body {
+      background: var(--rosa);
+      font-family: 'Inter', sans-serif;
+      color: var(--testo);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.2rem 3rem;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      opacity: .92;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 8vw, 58px);
+      color: var(--rosso);
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(13px, 3.5vw, 17px);
+      color: var(--rosso);
+      margin-top: .45rem;
+      opacity: .85;
+    }
+
+    /* ── Intro ── */
+    .intro {
+      max-width: 440px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--testo);
+      margin-bottom: 2.2rem;
+    }
+
+    .intro a {
+      color: var(--rosso);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* ── Game Cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 560px;
+      width: 100%;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 2.5px solid var(--rosso);
+      border-radius: 20px;
+      padding: 1.8rem 1.4rem 1.5rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: background .18s, transform .18s, box-shadow .18s;
+      box-shadow: 0 4px 18px rgba(139,26,47,.10);
+    }
+
+    .card:hover {
+      background: var(--rosso);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(139,26,47,.22);
+    }
+
+    .card-emoji {
+      font-size: 44px;
+      line-height: 1;
+      transition: transform .18s;
+    }
+
+    .card:hover .card-emoji {
+      transform: scale(1.12) rotate(-4deg);
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 5vw, 30px);
+      color: var(--rosso);
+      text-align: center;
+      transition: color .18s;
+    }
+
+    .card:hover .card-name { color: var(--card-bg); }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--testo);
+      text-align: center;
+      line-height: 1.55;
+      transition: color .18s;
+    }
+
+    .card:hover .card-desc { color: #f7dcd8; }
+
+    .card-cta {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rosso);
+      border: 2px solid var(--rosso);
+      border-radius: 999px;
+      padding: .3rem .9rem;
+      transition: background .18s, color .18s, border-color .18s;
+    }
+
+    .card:hover .card-cta {
+      background: var(--card-bg);
+      color: var(--rosso);
+      border-color: var(--card-bg);
+    }
+
+    /* ── Badge "Episodio corrente" ── */
+    .badge {
+      display: inline-block;
+      background: var(--giallo);
+      color: #5a3a00;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: .18rem .65rem;
+      margin-top: 2px;
+      letter-spacing: .5px;
+    }
+
+    /* ── Newsletter strip ── */
+    .newsletter-strip {
+      max-width: 480px;
+      width: 100%;
+      background: var(--rosso);
+      border-radius: 18px;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .newsletter-strip p {
+      font-size: 14px;
+      color: #f7dcd8;
+      line-height: 1.55;
+    }
+
+    .newsletter-strip strong { color: #fff; }
+
+    .btn-iscriviti {
+      display: inline-block;
+      background: var(--card-bg);
+      color: var(--rosso);
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 999px;
+      padding: .55rem 1.5rem;
+      text-decoration: none;
+      transition: background .15s, color .15s;
+      border: 2px solid transparent;
+    }
+
+    .btn-iscriviti:hover {
+      background: transparent;
+      color: var(--card-bg);
+      border-color: var(--card-bg);
+    }
+
+    /* ── Social ── */
+    .social-row {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+    }
+
+    .social-row a {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rosso);
+      text-decoration: none;
+    }
+
+    .social-row a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      font-size: 12px;
+      color: var(--testo);
+      opacity: .6;
+      text-align: center;
+    }
+
+    footer a { color: var(--rosso); }
+  </style>
+  <script data-goatcounter="https://storiepontederesi.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+  <header>
+    <img
+      src="/cruciverba/LogoStoriePontederesi_cruciverba.png"
+      alt="Storie Pontederesi"
+      class="logo"
+    >
+    <h1>I Giochi di<br>Storie Pontederesi</h1>
+    <p class="tagline">Ogni tanto staccare fa bene ai neuroni</p>
+  </header>
+
+  <p class="intro">
+    Alla fine di ogni numero di <strong>Rotatorie</strong>, la newsletter di Storie Pontederesi su Pontedera, 
+    Scegli quello che vuoi giocare, oppure
+    <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">iscriviti gratis</a>
+    per ricevere i prossimi direttamente nella tua casella.
+  </p>
+
+  <div class="cards">
+
+    <!-- Cruciverba Pontederese -->
+    <a class="card" href="/giochi/cruciverba/" id="card-cruciverba">
+      <span class="card-emoji">📰</span>
+      <span class="card-name">Cruciverba<br>Pontederese</span>
+      <span class="badge">Tipo il cruciverba su carta</span>
+      <span class="card-desc">
+        Il cruciverba di Pontedera: definizioni che parlano di storia,
+        luoghi e personaggi del territorio.
+      </span>
+      <span class="card-cta">Gioca →</span>
+    </a>
+
+    <!-- Vesple -->
+    <a class="card" href="/giochi/vesple/" id="card-vesple">
+      <span class="card-emoji">🛵</span>
+      <span class="card-name">Vesple</span>
+      <span class="badge">Tipo Wordle</span>
+      <span class="card-desc">
+        Ogni giorno 6 tentativi per indovinare una parola di 5 lettere.
+      </span>
+      <span class="card-cta">Gioca →</span>
+    </a>
+
+    <!-- Vespoku -->
+    <a class="card" href="/giochi/vespoku/" id="card-vespoku">
+      <span class="card-emoji">🔢</span>
+      <span class="card-name">Vespoku</span>
+      <span class="badge">Tipo Sudoku</span>
+      <span class="card-desc">
+        Il gioco dedicato agli amanti dei numeri, ovviamente in salsa pontederese.
+      </span>
+      <span class="card-cta">Gioca →</span>
+    </a>
+
+    <!-- Vespy Crash -->
+    <a class="card" href="/giochi/vespycrash/" id="card-vespycrash">
+      <span class="card-emoji">💥</span>
+      <span class="card-name">Vespy<br>Crash</span>
+      <span class="badge">Tipo Candy Crush</span>
+      <span class="card-desc">
+        Abbina 3 o più emoji pontederesi: vespe, ponti, guantoni, rotonde e altro. 25 mosse per fare più punti possibile!
+      </span>
+      <span class="card-cta">Gioca →</span>
+    </a>
+
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter-strip">
+    <p>
+      <strong>Non perdere il prossimo gioco.</strong><br>
+      Iscriviti gratis a <strong>Rotatorie</strong>, la newsletter di Storie Pontederesi
+      su tutto ciò che ruota attorno a Pontedera.
+    </p>
+    <a class="btn-iscriviti" href="https://storiepontederesi.substack.com/subscribe" target="_blank">
+      ✉ Iscriviti gratis
+    </a>
+  </div>
+
+  <!-- Social -->
+  <div class="social-row">
+    <a href="https://www.instagram.com/storiepontederesi" target="_blank">📸 @storiepontederesi</a>
+    <a href="https://www.facebook.com/storiepontederesi" target="_blank">👍 @storiepontederesi</a>
+    <a href="https://storiepontederesi.substack.com" target="_blank">✉ Newsletter</a>
+  </div>
+
+  <footer>
+    <p>© Storie Pontederesi · <a href="https://storiepontederesi.it" target="_blank">storiepontederesi.it</a></p>
+  </footer>
+
+</body>
+</html>

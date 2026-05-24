@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Il Cruciverba Pontederese #NUMERO">
+<meta property="og:description" content="Metti alla prova la tua conoscenza di Pontedera con il cruciverba di Rotatorie!">
+<meta property="og:image" content="https://storiepontederesi.github.io/cruciverbapontederese/LogoStoriePontederesi_cruciverba.png">
+<meta property="og:type" content="website">
+<title>Il Cruciverba Pontederese #NUMERO</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../cruciverba.css">
+</head>
+<body>
+
+<h1>Il Cruciverba<br>Pontederese</h1>
+<div class="numero">#NUMERO</div>
+
+<div class="intro">
+  Il cruciverba di <strong>Rotatorie</strong>, la newsletter di <em>Storie Pontederesi</em> su tutto ciò che ruota attorno a Pontedera.<br><br>
+  Non sei ancora iscritto? <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">Iscriviti gratis →</a>
+</div>
+
+<div id="grid" class="cw-grid"></div>
+
+<div class="btn-row">
+  <div class="btn-wrap">
+    <button class="btn-check" onclick="check()">✔ Verifica</button>
+    <span class="btn-label">controlla le risposte</span>
+  </div>
+  <div class="btn-wrap">
+    <button class="btn-reset" onclick="reset()">↺ Ricomincia</button>
+    <span class="btn-label">cancella tutto</span>
+  </div>
+</div>
+
+<p class="result-msg" id="msg"></p>
+
+<div class="share-box" id="shareBox">
+  <div class="share-title">Condividi il risultato!</div>
+  <div class="share-btns">
+    <a class="share-btn sh-wa" href="#" onclick="shareWA();return false;">💬 WhatsApp</a>
+    <button class="share-btn sh-ig" onclick="shareIG()">📸 Instagram</button>
+    <a class="share-btn sh-fb" href="#" onclick="shareFB();return false;">👍 Facebook</a>
+    <button class="share-btn sh-copy" onclick="copyText()">📋 Copia testo</button>
+  </div>
+  <div class="copied-msg" id="copiedMsg"></div>
+</div>
+
+<div class="clues">
+  <div class="clue-section">
+    <h3>Orizzontali</h3>
+    <!-- Aggiungi una riga per ogni parola orizzontale -->
+    <div class="clue-item"><span class="clue-num">1.</span> Definizione della parola 1</div>
+    <div class="clue-item"><span class="clue-num">2.</span> Definizione della parola 2</div>
+  </div>
+  <div class="clue-section">
+    <h3>Verticali</h3>
+    <!-- Aggiungi una riga per ogni parola verticale -->
+    <div class="clue-item"><span class="clue-num">3.</span> Definizione della parola 3</div>
+  </div>
+</div>
+
+<div class="reveal-section">
+  <p class="reveal-hint">«'un ti riesce?»<br>Niente paura... guarda la soluzione — non lo diciamo a nessuno. 🤫</p>
+  <button class="btn-reveal" onclick="reveal()">👁 Mostra la soluzione</button>
+</div>
+
+<!-- NAVIGAZIONE: aggiungi link agli episodi precedenti -->
+<div class="nav-episodi">
+  ← <a href="../01/">Episodio #1</a> &nbsp;|&nbsp; <a href="../">Tutti gli episodi</a>
+</div>
+
+<div class="social-row">
+  <a href="https://www.instagram.com/storiepontederesi" target="_blank">📸 @storiepontederesi</a>
+  <a href="https://www.facebook.com/storiepontederesi" target="_blank">👍 @storiepontederesi</a>
+  <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">✉ Iscriviti</a>
+</div>
+
+<img src="../LogoStoriePontederesi_cruciverba.png" alt="Storie Pontederesi" class="logo">
+
+<script src="../cruciverba.js"></script>
+<script>
+// ============================================================
+// MODIFICA SOLO QUESTO BLOCCO
+// ============================================================
+initCruciverba({
+  rows: 5,        // righe totali (ultima riga occupata + 1)
+  cols: 9,        // colonne totali (ultima colonna occupata + 1)
+  episodeNum: 0,  // ← sostituisci con il numero dell'episodio
+
+  words: [
+    // dir "H" = orizzontale, dir "V" = verticale
+    // row e col partono da 0 (angolo in alto a sinistra)
+    {word:"PAROLA1", row:0, col:0, dir:"H", num:1},
+    {word:"PAROLA2", row:2, col:1, dir:"H", num:2},
+    {word:"PAROLA3", row:0, col:3, dir:"V", num:3},
+  ]
+});
+// ============================================================
+</script>
+</body>
+</html>

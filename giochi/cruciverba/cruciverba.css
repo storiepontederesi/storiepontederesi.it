@@ -1,0 +1,49 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f2c9be;font-family:sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+h1{font-family:'Permanent Marker',cursive;color:#8b1a2f;font-size:clamp(26px,6vw,50px);text-align:center;text-transform:uppercase;line-height:1.15;margin-bottom:.3rem;letter-spacing:1px}
+.numero{font-family:'Permanent Marker',cursive;color:#8b1a2f;font-size:20px;margin-bottom:.6rem}
+.intro{max-width:400px;text-align:center;font-size:14px;color:#4a2020;line-height:1.6;margin-bottom:1.2rem}
+.intro a{color:#8b1a2f;font-weight:700;text-decoration:underline}
+.cw-grid{display:inline-grid;gap:0;margin-bottom:.8rem;position:relative}
+.cell{width:44px;height:44px;position:relative;display:flex;align-items:center;justify-content:center;background:transparent}
+.cell.active{background:#5bbfad;border:2px solid #1a1a1a}
+.cell.active input:focus{background:#8de0d0}
+.cell.correct{background:#a8e6a0!important;border:2px solid #1a5c1a}
+.cell.wrong{background:#f5a0a0!important;border:2px solid #8b1a1a}
+.cell input{width:100%;height:100%;border:none;background:transparent;text-align:center;font-size:18px;font-weight:700;text-transform:uppercase;color:#1a1a1a;outline:none;caret-color:transparent;cursor:pointer}
+.cell-num{position:absolute;top:2px;left:3px;font-size:9px;font-weight:700;color:#8b1a2f;pointer-events:none;line-height:1;z-index:2}
+.btn-row{display:flex;gap:10px;margin:.6rem 0 .3rem;flex-wrap:wrap;justify-content:center}
+.btn-wrap{display:flex;flex-direction:column;align-items:center;gap:3px}
+.btn-check{background:#8b1a2f;color:#f2c9be;border:2px solid #8b1a2f;font-family:'Permanent Marker',cursive;font-size:14px;padding:9px 20px;border-radius:20px;cursor:pointer}
+.btn-check:hover{background:#6e1424}
+.btn-reset{background:transparent;color:#8b1a2f;border:2px dashed #8b1a2f;font-family:'Permanent Marker',cursive;font-size:14px;padding:9px 20px;border-radius:20px;cursor:pointer}
+.btn-reset:hover{background:#8b1a2f;color:#f2c9be}
+.btn-label{font-size:11px;color:#8b1a2f;font-style:italic}
+.result-msg{font-size:15px;color:#8b1a2f;font-weight:700;margin:.4rem 0;text-align:center;min-height:22px}
+.share-box{display:none;flex-direction:column;align-items:center;gap:8px;margin:.6rem 0;max-width:400px;width:100%;background:#fff4f0;border:2px solid #8b1a2f;border-radius:16px;padding:1rem}
+.share-box.visible{display:flex}
+.share-title{font-family:'Permanent Marker',cursive;color:#8b1a2f;font-size:15px}
+.share-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.share-btn{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:8px 14px;border-radius:20px;border:none;cursor:pointer;text-decoration:none;color:#fff}
+.sh-wa{background:#25D366}
+.sh-ig{background:#C13584}
+.sh-fb{background:#1877F2}
+.sh-copy{background:#8b1a2f}
+.share-btn:hover{opacity:.85}
+.clues{max-width:400px;width:100%;margin-top:.8rem}
+.clue-section{margin-bottom:1rem}
+.clue-section h3{font-family:'Permanent Marker',cursive;font-size:17px;color:#8b1a2f;margin-bottom:.6rem}
+.clue-item{font-size:17px;color:#2a2a2a;margin-bottom:.5rem;line-height:1.5}
+.clue-num{font-weight:700;margin-right:4px;color:#8b1a2f}
+.reveal-section{max-width:400px;width:100%;margin-top:.5rem;background:#fff4f0;border:2px dashed #c4758a;border-radius:16px;padding:1rem;text-align:center}
+.reveal-hint{font-size:13px;color:#8b1a2f;font-style:italic;margin-bottom:.6rem;line-height:1.5}
+.btn-reveal{background:transparent;color:#8b1a2f;border:2px solid #8b1a2f;font-family:'Permanent Marker',cursive;font-size:14px;padding:9px 20px;border-radius:20px;cursor:pointer}
+.btn-reveal:hover{background:#8b1a2f;color:#f2c9be}
+.nav-episodi{max-width:400px;width:100%;margin-top:1.2rem;text-align:center}
+.nav-episodi a{font-family:'Permanent Marker',cursive;color:#8b1a2f;font-size:13px;text-decoration:none;margin:0 8px}
+.nav-episodi a:hover{text-decoration:underline}
+.social-row{display:flex;gap:14px;margin-top:1rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.social-row a{color:#8b1a2f;font-size:13px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:5px}
+.social-row a:hover{text-decoration:underline}
+.logo{width:60px;height:60px;object-fit:contain;margin-top:1.2rem;opacity:.9}
+.copied-msg{font-size:12px;color:#8b1a2f;font-style:italic;min-height:16px;text-align:center}
