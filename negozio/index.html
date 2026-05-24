@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Negozio — Storie Pontederesi</title>
+  <meta name="description" content="Il negozio di Storie Pontederesi: tazze, t-shirt e gadget di Pontedera. Ogni acquisto sostiene un progetto editoriale indipendente.">
+  <meta property="og:title" content="Negozio — Storie Pontederesi">
+  <meta property="og:description" content="Porta Pontedera con te. Gadget e abbigliamento di Storie Pontederesi.">
+  <meta property="og:url" content="https://storiepontederesi.it/negozio">
+  <link rel="icon" href="../grafiche/logo.png">
+  <link rel="apple-touch-icon" href="../grafiche/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --granata: #a40d26;
+      --granata-scuro: #7a0a1c;
+      --granata-chiaro: #c41030;
+      --crema: #f5d0c5;
+      --crema-scuro: #ead0c8;
+      --bianco: #fff;
+      --testo: #2a0a0f;
+      --testo-mid: #6b2030;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--testo); background: var(--crema); }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+      padding: .9rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--crema);
+      box-shadow: 0 2px 20px rgba(164,13,38,.10);
+    }
+    .nav-logo { height: 38px; object-fit: contain; }
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a {
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      color: var(--granata); letter-spacing: .3px; transition: color .2s;
+    }
+    nav a:hover { color: var(--granata-scuro); }
+    nav a.active { border-bottom: 2px solid var(--granata); padding-bottom: 2px; }
+    .nav-cta {
+      background: var(--granata); color: var(--bianco) !important;
+      border-radius: 999px; padding: .35rem .9rem; font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--granata-scuro) !important; }
+
+    /* Hamburger */
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--granata); border-radius: 2px; }
+    #mobile-menu {
+      display: none; position: fixed; inset: 0; top: 64px;
+      background: var(--crema); z-index: 99; padding: 2rem;
+      flex-direction: column; gap: 1.4rem;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a { font-size: 20px; font-weight: 700; color: var(--granata); text-decoration: none; font-family: 'Playfair Display', serif; }
+
+    /* ── HERO SHOP ── */
+    .shop-hero {
+      background: var(--granata);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .shop-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 58px);
+      color: var(--bianco); font-weight: 900; line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .shop-hero h1 em { font-style: italic; }
+    .shop-hero p { font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,.8); line-height: 1.65; max-width: 520px; margin: 0 auto; }
+
+    /* ── PRODOTTI ── */
+    .shop-section { padding: 5rem 2rem; }
+    .shop-inner { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--granata); margin-bottom: .6rem;
+    }
+    .shop-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;
+      margin-top: 2.5rem;
+    }
+
+    .prodotto-card {
+      background: var(--bianco); border-radius: 20px; overflow: hidden;
+      border: 2px solid var(--crema-scuro);
+      transition: transform .2s, box-shadow .2s;
+      display: flex; flex-direction: column;
+    }
+    .prodotto-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(164,13,38,.14); }
+    .prodotto-img {
+      height: 220px; background: var(--crema);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 72px;
+    }
+    .prodotto-body { padding: 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+    .prodotto-body h2 {
+      font-family: 'Playfair Display', serif; font-size: 22px;
+      color: var(--testo); margin-bottom: .5rem;
+    }
+    .prodotto-body p { font-size: 14px; color: var(--testo-mid); line-height: 1.65; margin-bottom: 1.2rem; flex: 1; }
+    .prodotto-footer {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    .prodotto-prezzo {
+      font-family: 'Playfair Display', serif; font-size: 26px;
+      color: var(--granata); font-weight: 700;
+    }
+    .prodotto-prezzo.tbd { font-size: 16px; color: var(--testo-mid); font-family: 'Inter', sans-serif; font-style: italic; }
+    .btn-acquista {
+      display: inline-block; padding: .55rem 1.4rem; border-radius: 999px;
+      background: var(--granata); color: var(--bianco);
+      font-weight: 700; font-size: 14px; text-decoration: none;
+      border: 2px solid var(--granata);
+      transition: background .2s, color .2s;
+    }
+    .btn-acquista:hover { background: var(--granata-scuro); border-color: var(--granata-scuro); }
+    .btn-presto {
+      display: inline-block; padding: .55rem 1.4rem; border-radius: 999px;
+      border: 2px solid var(--crema-scuro); color: var(--testo-mid);
+      font-weight: 600; font-size: 13px; cursor: default;
+    }
+
+    /* ── INFO STRIP ── */
+    .info-strip {
+      background: var(--bianco); padding: 3rem 2rem;
+      border-top: 1px solid var(--crema-scuro); border-bottom: 1px solid var(--crema-scuro);
+    }
+    .info-inner { max-width: 900px; margin: 0 auto; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .info-item { text-align: center; }
+    .info-icon { font-size: 32px; margin-bottom: .5rem; }
+    .info-item h3 { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--granata); margin-bottom: .3rem; }
+    .info-item p { font-size: 13px; color: var(--testo-mid); line-height: 1.6; }
+
+    /* ── CTA ── */
+    .cta-band {
+      background: var(--granata); padding: 4rem 2rem; text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 36px);
+      color: var(--bianco); font-weight: 900; margin-bottom: .8rem;
+    }
+    .cta-band p { color: rgba(255,255,255,.8); font-size: 15px; max-width: 480px; margin: 0 auto 1.6rem; line-height: 1.65; }
+    .btn-cta {
+      display: inline-block; background: var(--bianco); color: var(--granata);
+      font-weight: 700; font-size: 15px; border-radius: 999px;
+      padding: .75rem 2rem; text-decoration: none;
+      border: 2px solid var(--bianco); transition: background .2s, color .2s;
+    }
+    .btn-cta:hover { background: transparent; color: var(--bianco); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--granata-scuro); color: rgba(255,255,255,.7);
+      padding: 2.5rem 2rem; text-align: center;
+    }
+    footer img { height: 40px; margin-bottom: .8rem; opacity: .85; }
+    footer p { font-size: 13px; line-height: 1.8; }
+    footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+    footer a:hover { color: var(--bianco); }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: .8rem 0; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .shop-hero { padding: 3.5rem 1.2rem 3rem; }
+      .shop-section { padding: 3rem 1.2rem; }
+    }
+  </style>
+  <script data-goatcounter="https://storiepontederesi.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<header id="navbar">
+  <a href="/">
+    <img src="../grafiche/logo.png" alt="Storie Pontederesi" class="nav-logo">
+  </a>
+  <nav>
+    <a href="/#cosa-facciamo">Cosa facciamo</a>
+    <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
+    <a href="https://giochi.storiepontederesi.it" target="_blank">Giochi</a>
+    <a href="/negozio/" class="active">Negozio</a>
+    <a href="/#contatti">Contatti</a>
+    <a href="https://storiepontederesi.substack.com/subscribe" target="_blank" class="nav-cta">Iscriviti</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div id="mobile-menu">
+  <a href="/#cosa-facciamo" onclick="toggleMenu()">Cosa facciamo</a>
+  <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
+  <a href="https://giochi.storiepontederesi.it" target="_blank">Giochi</a>
+  <a href="/negozio/">Negozio</a>
+  <a href="/#contatti" onclick="toggleMenu()">Contatti</a>
+  <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">→ Iscriviti gratis</a>
+</div>
+
+<!-- ── HERO ── -->
+<div class="shop-hero">
+  <h1>Porta Pontedera<br><em>con te</em></h1>
+  <p>Gadget e abbigliamento di Storie Pontederesi. Ogni acquisto sostiene un progetto editoriale indipendente.</p>
+</div>
+
+<!-- ── PRODOTTI ── -->
+<section class="shop-section">
+  <div class="shop-inner">
+    <p class="section-label">I prodotti</p>
+    <div class="shop-grid">
+
+      <!-- Tazza -->
+      <div class="prodotto-card">
+        <div class="prodotto-img">☕</div>
+        <div class="prodotto-body">
+          <h2>Tazza Storie Pontederesi</h2>
+          <p>La tazza ufficiale di Storie Pontederesi. Per iniziare ogni mattina pensando alla tua città. Ceramica di qualità, con il logo sul fronte.</p>
+          <div class="prodotto-footer">
+            <span class="prodotto-prezzo tbd">Presto disponibile</span>
+            <span class="btn-presto">In arrivo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- T-shirt -->
+      <div class="prodotto-card">
+        <div class="prodotto-img">👕</div>
+        <div class="prodotto-body">
+          <h2>T-shirt Storie Pontederesi</h2>
+          <p>Indossa Pontedera. T-shirt con il logo di Storie Pontederesi stampato sul petto, 100% cotone, disponibile in più taglie.</p>
+          <div class="prodotto-footer">
+            <span class="prodotto-prezzo tbd">Presto disponibile</span>
+            <span class="btn-presto">In arrivo</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── INFO ── -->
+<div class="info-strip">
+  <div class="info-inner">
+    <p class="section-label">Come funziona</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-icon">🛒</div>
+        <h3>Scegli il prodotto</h3>
+        <p>Seleziona quello che ti piace e clicca su Acquista. Verrai reindirizzato alla pagina di pagamento sicura.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💳</div>
+        <h3>Pagamento sicuro</h3>
+        <p>Il pagamento avviene su Stripe, la piattaforma più sicura al mondo. Carta di credito, debito o altri metodi.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📦</div>
+        <h3>Spedizione</h3>
+        <p>Ricevi conferma via email e il tuo ordine direttamente a casa entro pochi giorni lavorativi.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">❤️</div>
+        <h3>Sostieni il progetto</h3>
+        <p>Ogni acquisto aiuta Storie Pontederesi a continuare a raccontare Pontedera in modo indipendente.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="cta-band">
+  <h2>Non perdere i nuovi prodotti</h2>
+  <p>Iscriviti alla newsletter Rotatorie e sarai il primo a sapere quando il negozio aprirà ufficialmente.</p>
+  <a href="https://storiepontederesi.substack.com/subscribe" target="_blank" class="btn-cta">Iscriviti gratis</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <img src="../grafiche/logo-bianco.png" alt="Storie Pontederesi">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/#cosa-facciamo">Cosa facciamo</a>
+    <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
+    <a href="https://giochi.storiepontederesi.it" target="_blank">Giochi</a>
+    <a href="/negozio/">Negozio</a>
+    <a href="/#contatti">Contatti</a>
+  </div>
+  <p>© Storie Pontederesi · <a href="mailto:storiepontederesi@gmail.com">storiepontederesi@gmail.com</a></p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+</script>
+</body>
+</html>
