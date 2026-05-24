@@ -2,8 +2,8 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="/giochi/cruciverba/LogoStoriePontederesi_cruciverba.png">
-  <link rel="apple-touch-icon" href="/giochi/cruciverba/LogoStoriePontederesi_cruciverba.png">
+  <link rel="icon" href="../grafiche/logo.png">
+  <link rel="apple-touch-icon" href="../grafiche/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vespoku — Sudoku di Storie Pontederesi</title>
   <meta name="description" content="Vespoku: il Sudoku giornaliero di Storie Pontederesi. Un nuovo puzzle ogni giorno, allegato alla newsletter Rotatorie.">
@@ -90,11 +90,55 @@
     .nav{font-size:12px;text-align:center;margin-bottom:.5rem}
     .nav a{color:var(--rosso);font-weight:700;text-decoration:none}
     .logo{width:44px;opacity:.9;margin-top:.4rem}
+  
+    /* ── NAVBAR ── */
+    #navbar{width:100%;align-self:stretch;background:#f5d0c5;box-shadow:0 2px 16px rgba(164,13,38,.10);padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+    .nav-logo{height:34px;object-fit:contain;}
+    #navbar nav{display:flex;gap:1.6rem;align-items:center;}
+    #navbar nav a{font-size:13px;font-weight:600;text-decoration:none;color:#a40d26;letter-spacing:.3px;transition:color .2s;}
+    #navbar nav a:hover{color:#7a0a1c;}
+    #navbar nav a.active{border-bottom:2px solid #a40d26;padding-bottom:2px;}
+    .nav-cta{background:#a40d26;color:#fff!important;border-radius:999px;padding:.3rem .85rem;font-weight:700!important;}
+    .nav-cta:hover{background:#7a0a1c!important;}
+    .hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;background:none;border:none;padding:0;}
+    .hamburger span{display:block;width:24px;height:2px;background:#a40d26;border-radius:2px;}
+    #mobile-menu{display:none;position:fixed;inset:0;top:60px;background:#f5d0c5;z-index:99;padding:2rem;flex-direction:column;gap:1.4rem;}
+    #mobile-menu.open{display:flex;}
+    #mobile-menu a{font-size:20px;font-weight:700;color:#a40d26;text-decoration:none;font-family:'Playfair Display',serif;}
+    /* ── FOOTER ── */
+    .site-footer{width:100%;align-self:stretch;background:#7a0a1c;color:rgba(255,255,255,.7);padding:2rem 1.5rem;text-align:center;margin-top:auto;}
+    .site-footer img{height:36px;margin-bottom:.6rem;opacity:.85;}
+    .site-footer p{font-size:12px;line-height:1.8;}
+    .site-footer a{color:rgba(255,255,255,.7);text-decoration:none;}
+    .site-footer a:hover{color:#fff;}
+    .footer-links{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin:.6rem 0;}
   </style>
   <script data-goatcounter="https://storiepontederesi.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+
+<!-- ── NAVBAR ── -->
+<header id="navbar">
+  <a href="/"><img src="../grafiche/logo.png" alt="Storie Pontederesi" class="nav-logo"></a>
+  <nav>
+    <a href="/#cosa-facciamo">Cosa facciamo</a>
+    <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
+    <a href="/giochi/" class="active">Giochi</a>
+    <a href="/negozio/">Negozio</a>
+    <a href="/#contatti">Contatti</a>
+    <a href="https://storiepontederesi.substack.com/subscribe" target="_blank" class="nav-cta">Iscriviti</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</header>
+<div id="mobile-menu">
+  <a href="/#cosa-facciamo" onclick="toggleMenu()">Cosa facciamo</a>
+  <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
+  <a href="/giochi/">Giochi</a>
+  <a href="/negozio/" onclick="toggleMenu()">Negozio</a>
+  <a href="/#contatti" onclick="toggleMenu()">Contatti</a>
+  <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">→ Iscriviti gratis</a>
+</div>
 
 <header>
   <h1>Vespoku</h1>
@@ -118,7 +162,7 @@
   <a class="btn" href="https://storiepontederesi.substack.com/subscribe" target="_blank" style="display:inline-block;margin-top:.3rem">✉ Iscriviti gratis</a>
 </div>
 
-<div class="nav"><a href="../">← Tutti i giochi</a></div>
+
 <div class="social-row">
   <a href="https://www.instagram.com/storiepontederesi" target="_blank">📸 @storiepontederesi</a>
   <a href="https://storiepontederesi.substack.com" target="_blank">✉ Newsletter</a>
@@ -395,5 +439,18 @@ document.addEventListener("keydown",e=>{
 buildNumpad();
 inizia();
 </script>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <img src="../grafiche/logo-bianco.png" alt="Storie Pontederesi">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/giochi/">Giochi</a>
+    <a href="/negozio/">Negozio</a>
+    <a href="/#contatti">Contatti</a>
+    <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
+  </div>
+  <p>© Storie Pontederesi · <a href="mailto:storiepontederesi@gmail.com">storiepontederesi@gmail.com</a></p>
+</footer>
 </body>
 </html>
