@@ -21,11 +21,15 @@
     body{background:var(--rosa);font-family:'Inter',sans-serif;color:var(--testo);
       min-height:100vh;display:flex;flex-direction:column;align-items:center;
       padding:1.5rem 1rem 3rem;gap:0}
-    header{text-align:center;margin-bottom:.6rem}
+    header{text-align:center;margin-bottom:.3rem}
     h1{font-family:'Playfair Display',serif;font-size:clamp(30px,8vw,52px);
       color:var(--rosso);text-transform:uppercase;line-height:1.1}
-    .tagline{font-size:13px;color:var(--testo);opacity:.8;margin-top:.3rem;line-height:1.5}
-    #grid{display:grid;grid-template-rows:repeat(6,1fr);gap:6px;margin:1rem 0}
+    .legenda{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:.45rem}
+    .leg-item{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--testo);opacity:.8}
+    .leg-cell{width:15px;height:15px;border-radius:3px;flex-shrink:0}
+    .leg-cell.v{background:var(--teal)}
+    .leg-cell.g{background:var(--giallo)}
+    #grid{display:grid;grid-template-rows:repeat(6,1fr);gap:6px;margin:.5rem 0}
     .row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
     .cell{
       width:54px;height:54px;border:2.5px solid var(--rosso);border-radius:8px;
@@ -55,8 +59,8 @@
     .key.verde{background:var(--teal);border-color:var(--teal);color:#fff}
     .key.giallo{background:var(--giallo);border-color:var(--giallo);color:#5a3a00}
     .key.grigio{background:var(--grigio);border-color:var(--grigio);color:#fff}
-    #msg{min-height:28px;font-weight:700;font-size:15px;color:var(--rosso);
-      text-align:center;margin-bottom:.6rem}
+    #msg{min-height:20px;font-weight:700;font-size:15px;color:var(--rosso);
+      text-align:center;margin-bottom:.2rem}
     #share-box{
       display:none;background:var(--bg-card);border:2.5px solid var(--rosso);
       border-radius:16px;padding:1.2rem 1.4rem;max-width:340px;width:100%;
@@ -154,9 +158,10 @@
   <h1>Vesple</h1>
   <p class="subtitolo">Il gioco di parole di Storie Pontederesi</p>
   <p class="data-oggi" id="data-oggi"></p>
-  <p class="tagline">Indovina la parola del giorno in 6 tentativi.<br>
-    🟩 lettera giusta al posto giusto &nbsp;·&nbsp; 🟨 lettera giusta, posto sbagliato
-  </p>
+  <div class="legenda">
+    <span class="leg-item"><span class="leg-cell v"></span>posto giusto</span>
+    <span class="leg-item"><span class="leg-cell g"></span>lettera giusta</span>
+  </div>
 </header>
 
 <div id="msg"></div>
