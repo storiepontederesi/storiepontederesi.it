@@ -20,20 +20,11 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: var(--testo); background: var(--crema); min-height: 100vh; display: flex; flex-direction: column; }
 
-    /* ── NAVBAR ── */
-    #navbar { background: var(--crema); box-shadow: 0 2px 16px rgba(164,13,38,.10); padding: .8rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { height: 34px; object-fit: contain; }
-    #navbar nav { display: flex; gap: 1.6rem; align-items: center; }
-    #navbar nav a { font-size: 13px; font-weight: 600; text-decoration: none; color: var(--granata); letter-spacing: .3px; transition: color .2s; }
-    #navbar nav a:hover { color: var(--granata-scuro); }
-    #navbar nav a.active { border-bottom: 2px solid var(--granata); padding-bottom: 2px; }
-    .nav-cta { background: var(--granata); color: var(--bianco) !important; border-radius: 999px; padding: .3rem .85rem; font-weight: 700 !important; }
-    .nav-cta:hover { background: var(--granata-scuro) !important; }
-    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; padding: 0; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--granata); border-radius: 2px; }
-    #mobile-menu { display: none; position: fixed; inset: 0; top: 60px; background: var(--crema); z-index: 99; padding: 2rem; flex-direction: column; gap: 1.4rem; }
-    #mobile-menu.open { display: flex; }
-    #mobile-menu a { font-size: 20px; font-weight: 700; color: var(--granata); text-decoration: none; font-family: 'Playfair Display', serif; }
+    /* ── TOPBAR ── */
+    .game-topbar { display: flex; align-items: center; justify-content: space-between; padding: .6rem 1.5rem .4rem; }
+    .back-link { color: var(--granata); text-decoration: none; font-size: 13px; font-weight: 700; }
+    .back-link:hover { text-decoration: underline; }
+    .topbar-logo { height: 26px; opacity: .8; }
 
     /* ── HERO ── */
     .hero { background: var(--granata); padding: 4rem 2rem 3rem; text-align: center; }
@@ -63,38 +54,17 @@
     .footer-links { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin: .6rem 0; }
     .footer-social { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: .75rem; font-size: 12px; opacity: .65; }
 
-    @media(max-width: 600px) {
-      #navbar nav { display: none; }
-      .hamburger { display: flex; }
-    }
+    .ep-latest { position: relative; }
+    .ep-latest::after { content: 'Ultimo'; position: absolute; top: -8px; right: -8px; background: var(--granata); color: #fff; font-size: 10px; font-weight: 700; border-radius: 999px; padding: .15rem .5rem; letter-spacing: .4px; }
   </style>
   <script data-goatcounter="https://storiepontederesi.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
-<header id="navbar">
-  <a href="/"><img src="../../grafiche/logo.png" alt="Storie Pontederesi" class="nav-logo"></a>
-  <nav>
-    <a href="/#cosa-facciamo">Cosa facciamo</a>
-    <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
-    <a href="/eventi/">Eventi</a>
-    <a href="/giochi/" class="active">Giochini</a>
-    <a href="/negozio/">Negozio</a>
-    <a href="/#contatti">Contatti</a>
-    <a href="https://storiepontederesi.substack.com/subscribe" target="_blank" class="nav-cta">Iscriviti</a>
-  </nav>
-  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
-</header>
-<div id="mobile-menu">
-  <a href="/#cosa-facciamo" onclick="toggleMenu()">Cosa facciamo</a>
-  <a href="https://storiepontederesi.substack.com" target="_blank">Rotatorie</a>
-  <a href="/eventi/" onclick="toggleMenu()">📅 Eventi</a>
-  <a href="/giochi/">Giochini</a>
-  <a href="/negozio/" onclick="toggleMenu()">Negozio</a>
-  <a href="/#contatti" onclick="toggleMenu()">Contatti</a>
-  <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">→ Iscriviti gratis</a>
+<div class="game-topbar">
+  <a href="/giochi/" class="back-link">← Giochini</a>
+  <a href="/"><img src="../../grafiche/logo.png" alt="Storie Pontederesi" class="topbar-logo"></a>
 </div>
 
 <!-- ── HERO ── -->
@@ -115,7 +85,7 @@
       <span class="ep-num">#1</span>
       <span class="ep-label">Gioca →</span>
     </a>
-    <a class="ep-card" href="02/">
+    <a class="ep-card ep-latest" href="02/">
       <span class="ep-num">#2</span>
       <span class="ep-label">Gioca →</span>
     </a>
@@ -149,8 +119,5 @@
   <img src="../../grafiche/logo-bianco.png" alt="Storie Pontederesi">
 </footer>
 
-<script>
-function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
-</script>
 </body>
 </html>

@@ -1,5 +1,12 @@
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#f2c9be;font-family:sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem}
+body{background:#f2c9be;font-family:sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:.5rem 1rem 2rem}
+/* ── TOPBAR ── */
+.game-topbar{width:100%;display:flex;align-items:center;justify-content:space-between;padding:.5rem 0 .4rem}
+.back-link{color:#8b1a2f;text-decoration:none;font-size:13px;font-weight:700}
+.back-link:hover{text-decoration:underline}
+.topbar-logo{height:26px;opacity:.8}
+/* ── BADGE ── */
+.game-badge{display:inline-block;background:#8b1a2f;color:#f2c9be;font-size:11px;font-weight:700;border-radius:999px;padding:.22rem .75rem;letter-spacing:.5px;margin-bottom:.3rem}
 h1{font-family:'Permanent Marker',cursive;color:#8b1a2f;font-size:clamp(26px,6vw,50px);text-align:center;text-transform:uppercase;line-height:1.15;margin-bottom:.3rem;letter-spacing:1px}
 .numero{font-family:'Permanent Marker',cursive;color:#8b1a2f;font-size:20px;margin-bottom:.6rem}
 .intro{max-width:400px;text-align:center;font-size:14px;color:#4a2020;line-height:1.6;margin-bottom:1.2rem}
