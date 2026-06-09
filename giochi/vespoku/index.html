@@ -114,6 +114,20 @@
     .footer-links{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin:.6rem 0;}
     .footer-social{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:.75rem;font-size:12px;opacity:.65;}
     @media(max-width:600px){#navbar nav{display:none;}.hamburger{display:flex;}}
+    /* ── GAME BADGE ── */
+    .game-badge{display:inline-block;background:var(--rosso);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:.22rem .75rem;letter-spacing:.5px;margin-bottom:.4rem}
+    .header-game{display:flex;align-items:center;justify-content:center;gap:.6rem}
+    .btn-help{background:none;border:2px solid var(--rosso);color:var(--rosso);border-radius:50%;width:22px;height:22px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
+    .btn-help:hover{background:var(--rosso);color:var(--bg)}
+    /* ── HELP OVERLAY ── */
+    #help-overlay{display:none;position:fixed;inset:0;background:rgba(74,32,32,.65);z-index:200;align-items:center;justify-content:center;padding:1rem}
+    #help-overlay.show{display:flex}
+    #help-box{background:var(--bg);border:2.5px solid var(--rosso);border-radius:20px;padding:1.6rem 1.4rem;max-width:300px;width:100%;text-align:center}
+    #help-box h2{font-family:'Playfair Display',serif;color:var(--rosso);font-size:20px;margin-bottom:.7rem}
+    #help-box p{font-size:13px;color:var(--testo);line-height:1.6;margin-bottom:.5rem}
+    #help-box ul{text-align:left;font-size:13px;color:var(--testo);line-height:1.8;padding-left:1.2rem;margin-bottom:.5rem}
+    .btn-start-play{margin-top:.9rem;padding:.6rem 1.6rem;border-radius:999px;border:none;background:var(--rosso);color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:'Playfair Display',serif}
+    .btn-start-play:hover{opacity:.9}
   </style>
   <script data-goatcounter="https://storiepontederesi.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -145,8 +159,12 @@
 </div>
 
 <header>
+  <span class="game-badge">🔢 Tipo Sudoku</span>
   <h1>Vespoku</h1>
-  <div class="ep" id="ep-label">#1 — Sudoku di Rotatorie</div>
+  <div class="header-game">
+    <div class="ep" id="ep-label">#1 — Sudoku di Rotatorie</div>
+    <button class="btn-help" onclick="apriHelp()" title="Come si gioca">?</button>
+  </div>
 </header>
 
 <div id="msg"></div>
@@ -395,8 +413,8 @@ function mostraVittoria(){
   document.getElementById("win-num").textContent=NUM_EP;
   document.getElementById("msg").textContent="🎉 Puzzle completato!";
   // flash tutte le celle
-  document.querySelectorAll(".cell").forEach(c=>{
-    c.classList.add("complete-flash");
+  document.querySelectorAll(".cell").forEach((c, i)=>{
+    setTimeout(() => c.classList.add("complete-flash"), i * 14);
   });
 }
 
@@ -442,8 +460,26 @@ document.addEventListener("keydown",e=>{
 // ── INIT ──────────────────────────────────────────────────────────────────
 buildNumpad();
 inizia();
+function apriHelp(){document.getElementById('help-overlay').classList.add('show');}
+function chiudiHelp(){document.getElementById('help-overlay').classList.remove('show');localStorage.setItem('vespoku_help_seen','1');}
+if(!localStorage.getItem('vespoku_help_seen')){document.getElementById('help-overlay').classList.add('show');}
 function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
 </script>
+
+<div id="help-overlay">
+  <div id="help-box">
+    <h2>Come si gioca Vespoku?</h2>
+    <p>Riempi la griglia 9×9 in modo che ogni <strong>riga</strong>, ogni <strong>colonna</strong> e ogni <strong>box 3×3</strong> contenga i numeri da 1 a 9, senza ripetizioni.</p>
+    <ul>
+      <li>Clicca una cella, poi un numero nel numpad</li>
+      <li>I numeri <strong style="color:var(--rosso)">in rosso</strong> sono fissi (dati)</li>
+      <li>I numeri <strong style="color:var(--teal)">in verde acqua</strong> sono corretti</li>
+      <li>I numeri <strong style="color:#c0392b">in rosso acceso</strong> sono errati</li>
+      <li>Usa ✏️ Note per annotare i candidati</li>
+    </ul>
+    <button class="btn-start-play" onclick="chiudiHelp()">Inizia a giocare →</button>
+  </div>
+</div>
 
 <!-- ── FOOTER ── -->
 <footer class="site-footer">

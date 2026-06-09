@@ -144,6 +144,24 @@
     .footer-links{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin:.6rem 0;}
     .footer-social{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:.75rem;font-size:12px;opacity:.65;}
     @media(max-width:600px){#navbar nav{display:none;}.hamburger{display:flex;}}
+    /* ── GAME BADGE ── */
+    .game-badge{display:inline-block;background:var(--rosso);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:.22rem .75rem;letter-spacing:.5px;margin-bottom:.4rem}
+    .header-actions{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.3rem}
+    .btn-help{background:none;border:2px solid var(--rosso);color:var(--rosso);border-radius:50%;width:22px;height:22px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
+    .btn-help:hover{background:var(--rosso);color:var(--bg)}
+    /* ── RECORD GLOW ── */
+    @keyframes record-pulse{0%{box-shadow:0 0 0 0 rgba(245,200,66,.7)}60%{box-shadow:0 0 24px 12px rgba(245,200,66,.25)}100%{box-shadow:0 0 0 0 rgba(245,200,66,0)}}
+    #gameover-box.record-glow{animation:record-pulse 1s ease 3}
+    /* ── HELP OVERLAY ── */
+    #help-overlay{display:none;position:fixed;inset:0;background:rgba(74,32,32,.65);z-index:200;align-items:center;justify-content:center;padding:1rem}
+    #help-overlay.show{display:flex}
+    #help-box{background:var(--bg);border:2.5px solid var(--rosso);border-radius:20px;padding:1.6rem 1.4rem;max-width:300px;width:100%;text-align:center}
+    #help-box h2{font-family:'Playfair Display',serif;color:var(--rosso);font-size:20px;margin-bottom:.7rem}
+    #help-box p{font-size:13px;color:var(--testo);line-height:1.65;margin-bottom:.6rem}
+    #help-box strong{color:var(--rosso)}
+    .help-emojis{font-size:26px;letter-spacing:4px;margin:.5rem 0}
+    .btn-start-play{margin-top:.9rem;padding:.6rem 1.6rem;border-radius:999px;border:none;background:var(--rosso);color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:'Playfair Display',serif}
+    .btn-start-play:hover{opacity:.9}
   </style>
 </head>
 <body>
@@ -173,13 +191,13 @@
 </div>
 
 <header>
+  <span class="game-badge">💥 Tipo Match-3</span>
   <h1>Vespy Crash</h1>
   <p class="subtitolo">Il match-3 di Storie Pontederesi</p>
-  <p class="istruzioni">
-    Clicca un'emoji, poi clicca quella adiacente per scambiarle.<br>
-    Allinea <strong>3 o più uguali</strong> in riga o colonna per farle sparire.<br>
-    Le combo in cascata valgono di più! Hai <strong>25 mosse</strong>.
-  </p>
+  <div class="header-actions">
+    <p class="istruzioni" style="margin:0">Allinea <strong>3+ emoji</strong> uguali in <strong>25 mosse</strong>.</p>
+    <button class="btn-help" onclick="apriHelp()" title="Come si gioca">?</button>
+  </div>
 </header>
 
 <div id="hud">
@@ -482,7 +500,7 @@ function handleClick(r, c) {
 // ── Game over / restart ───────────────────────────────────────────────────────
 function endGame() {
   const isRecord = score > bestScore;
-  if(isRecord) { bestScore = score; localStorage.setItem("vespycrash_best", bestScore); }
+  if(isRecord) { bestScore = score; localStorage.setItem("vespycrash_best", bestScore); document.getElementById("gameover-box").classList.add("record-glow"); }
   document.getElementById("final-score").textContent = score;
   document.getElementById("record-msg").textContent = isRecord
     ? "🏆 Nuovo record! Boia che giocatore!"
@@ -497,8 +515,22 @@ function restart() {
 }
 
 initGrid(); updateHUD(); renderGrid();
+function apriHelp(){document.getElementById('help-overlay').classList.add('show');}
+function chiudiHelp(){document.getElementById('help-overlay').classList.remove('show');localStorage.setItem('vespycrash_help_seen','1');}
+if(!localStorage.getItem('vespycrash_help_seen')){document.getElementById('help-overlay').classList.add('show');}
 function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
 </script>
+
+<div id="help-overlay">
+  <div id="help-box">
+    <h2>Come si gioca Vespy Crash?</h2>
+    <div class="help-emojis">🛵 🌉 🥊 🌀 ⚙️ 🌻</div>
+    <p>Clicca un'emoji, poi quella <strong>adiacente</strong> per scambiarle.</p>
+    <p>Allinea <strong>3 o più uguali</strong> in riga o colonna per farle sparire e guadagnare punti.</p>
+    <p>Le <strong>combo in cascata</strong> valgono di più! Hai <strong>25 mosse</strong> in totale.</p>
+    <button class="btn-start-play" onclick="chiudiHelp()">Inizia a giocare →</button>
+  </div>
+</div>
 
 <!-- ── FOOTER ── -->
 <footer class="site-footer">
