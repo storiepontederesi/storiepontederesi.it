@@ -80,20 +80,18 @@
     Ogni numero di <strong>Rotatorie</strong> include un cruciverba inedito su Pontedera.<br>
     Non sei ancora iscritto? <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">Iscriviti gratis →</a>
   </p>
-  <div class="episodes-grid">
-    <a class="ep-card" href="01/">
-      <span class="ep-num">#1</span>
-      <span class="ep-label">Gioca →</span>
-    </a>
-    <a class="ep-card ep-latest" href="02/">
-      <span class="ep-num">#2</span>
-      <span class="ep-label">Gioca →</span>
-    </a>
-    <a class="ep-card" href="03/">
-      <span class="ep-num">#3</span>
-      <span class="ep-label">Gioca →</span>
-    </a>
-  </div>
+  <div class="episodes-grid" id="episodi"></div>
+  <script src="episodi.js"></script>
+  <script src="cruciverba.js"></script>
+  <script>
+    // Mostra solo gli episodi gia usciti, il piu recente segnato come "Ultimo".
+    const ultimo = episodioCorrente(EPISODI.length);
+    document.getElementById('episodi').innerHTML = Array.from({ length: ultimo }, (_, i) => ultimo - i)
+      .map(n => `<a class="ep-card${n === ultimo ? ' ep-latest' : ''}" href="gioca/?n=${n}">
+        <span class="ep-num">#${n}</span>
+        <span class="ep-label">Gioca →</span>
+      </a>`).join('');
+  </script>
 </div>
 
 <!-- ── FOOTER ── -->

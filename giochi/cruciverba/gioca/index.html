@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" href="/grafiche/logo.png">
+  <link rel="apple-touch-icon" href="/grafiche/logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Il Cruciverba Pontederese">
+<meta property="og:description" content="Metti alla prova la tua conoscenza di Pontedera con il cruciverba di Rotatorie!">
+<meta property="og:image" content="https://storiepontederesi.it/giochi/cruciverba/LogoStoriePontederesi_cruciverba.png">
+<meta property="og:type" content="website">
+<title>Il Cruciverba Pontederese</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../cruciverba.css">
+  <script data-goatcounter="https://storiepontederesi.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<div class="game-topbar">
+  <a href="/giochi/" class="back-link">← Giochini</a>
+  <a href="/"><img src="/grafiche/logo.png" alt="Storie Pontederesi" class="topbar-logo"></a>
+</div>
+<span class="game-badge">📰 Tipo Cruciverba</span>
+<h1>Il Cruciverba<br>Pontederese</h1>
+<div class="numero" id="numero"></div>
+
+<div class="intro">
+  Sei sul cruciverba di <strong>Rotatorie</strong>, la newsletter di <em>Storie Pontederesi</em> su tutto ciò che ruota attorno a Pontedera.<br><br>
+  Non sei ancora iscritto? <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">Iscriviti gratis →</a>
+</div>
+
+<div id="grid" class="cw-grid"></div>
+
+<div class="btn-row">
+  <div class="btn-wrap">
+    <button class="btn-check" onclick="check()">✔ Verifica</button>
+    <span class="btn-label">controlla le risposte</span>
+  </div>
+  <div class="btn-wrap">
+    <button class="btn-reset" onclick="reset()">↺ Ricomincia</button>
+    <span class="btn-label">cancella tutto</span>
+  </div>
+</div>
+
+<p class="result-msg" id="msg"></p>
+
+<div class="share-box" id="shareBox">
+  <div class="share-title">Condividi il risultato!</div>
+  <div class="share-btns">
+    <a class="share-btn sh-wa" href="#" onclick="shareWA();return false;">💬 WhatsApp</a>
+    <button class="share-btn sh-ig" onclick="shareIG()">📸 Instagram</button>
+    <a class="share-btn sh-fb" href="#" onclick="shareFB();return false;">👍 Facebook</a>
+    <button class="share-btn sh-copy" onclick="copyText()">📋 Copia testo</button>
+  </div>
+  <div class="copied-msg" id="copiedMsg"></div>
+</div>
+
+<div class="clues">
+  <div class="clue-section" id="clues-H">
+    <h3>Orizzontali</h3>
+  </div>
+  <div class="clue-section" id="clues-V">
+    <h3>Verticali</h3>
+  </div>
+</div>
+
+<div class="reveal-section">
+  <p class="reveal-hint">«'un ti riesce?»<br>Niente paura... guarda la soluzione, non lo diciamo a nessuno. 🤫</p>
+  <button class="btn-reveal" onclick="reveal()">👁 Mostra la soluzione</button>
+</div>
+
+<div class="nav-episodi" id="nav"></div>
+
+<div class="social-row">
+  <a href="https://www.instagram.com/storiepontederesi" target="_blank">📸 @storiepontederesi</a>
+  <a href="https://www.facebook.com/storiepontederesi" target="_blank">👍 @storiepontederesi</a>
+  <a href="https://storiepontederesi.substack.com/subscribe" target="_blank">✉ Iscriviti</a>
+</div>
+
+<script src="../episodi.js"></script>
+<script src="../cruciverba.js"></script>
+<script>
+const ultimo = episodioCorrente(EPISODI.length);
+const richiesto = parseInt(new URLSearchParams(location.search).get('n'), 10);
+// Gli episodi futuri non si aprono: si torna all'ultimo uscito.
+const n = richiesto >= 1 && richiesto <= ultimo ? richiesto : ultimo;
+const ep = EPISODI[n - 1];
+
+document.title = `Il Cruciverba Pontederese #${n}`;
+document.getElementById('numero').textContent = `#${n}`;
+
+['H', 'V'].forEach(d => {
+  const box = document.getElementById('clues-' + d);
+  const parole = ep.words.filter(w => w.dir === d).sort((a, b) => a.num - b.num);
+  if (!parole.length) { box.remove(); return; }
+  parole.forEach(w => {
+    const item = document.createElement('div');
+    item.className = 'clue-item';
+    item.innerHTML = `<span class="clue-num">${w.num}.</span> `;
+    item.append(`${w.def} (${w.word.length})`);
+    box.appendChild(item);
+  });
+});
+
+const nav = [];
+if (n > 1) nav.push(`<a href="?n=${n - 1}">← Episodio #${n - 1}</a>`);
+nav.push(`<a href="../">Archivio episodi</a>`);
+if (n < ultimo) nav.push(`<a href="?n=${n + 1}">Episodio #${n + 1} →</a>`);
+document.getElementById('nav').innerHTML = nav.join(' &nbsp;|&nbsp; ');
+
+initCruciverba({ rows: ep.rows, cols: ep.cols, words: ep.words, episodeNum: n });
+</script>
+</body>
+</html>
