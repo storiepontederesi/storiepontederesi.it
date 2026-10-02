@@ -4,8 +4,10 @@ name: Cruciverba settimanale
 
 on:
   schedule:
-    # Giovedi 23:05 UTC = venerdi 00:05 con l'ora solare, 01:05 con l'ora legale.
-    - cron: "5 23 * * 4"
+    # Pronto prima delle 7, quando esce Rotatorie. Venerdi 04:17 UTC = 05:17 ora solare,
+    # 06:17 ora legale; il secondo giro e una riserva se GitHub ritarda o salta il primo.
+    - cron: "17 4 * * 5"
+    - cron: "47 4 * * 5"
   workflow_dispatch:
 
 permissions:

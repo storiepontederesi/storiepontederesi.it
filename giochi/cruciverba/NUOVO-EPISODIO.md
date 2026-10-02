@@ -6,7 +6,7 @@ non sono leggibili sul sito. Ogni venerdì GitHub Actions (`.github/workflows/cr
 lancia `pubblica.py`, che decifra il file con il segreto `CRUCIVERBA_CHIAVE` e aggiunge
 l'episodio della settimana a `episodi.js`.
 
-- **Uscita automatica:** il #3 esce venerdì 9 ottobre 2026, poi uno nuovo ogni venerdì
+- **Uscita automatica:** il #3 esce venerdì 9 ottobre 2026, poi uno nuovo ogni venerdì prima delle 7
   (costante `CRUCIVERBA_PRIMO_VENERDI` in `cruciverba.js`).
 - **Link:** `gioca/` apre l'ultimo uscito, `gioca/?n=5` un episodio preciso.
   Gli episodi futuri non si aprono. `01/` e `02/` reindirizzano a `gioca/?n=1` e `?n=2`.
