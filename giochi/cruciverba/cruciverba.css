@@ -28,34 +28,15 @@ h1{font-family:'Permanent Marker',cursive;color:var(--rosso);
 .intro a{color:var(--rosso);font-weight:700;text-decoration:underline}
 
 /* ── GRIGLIA ── */
-.cw-grid{
-  display:inline-grid;gap:3px;margin-bottom:.9rem;position:relative;
-  background:var(--rosso);padding:4px;border-radius:10px;
-  box-shadow:0 4px 20px rgba(164,13,38,.2);
-}
-.cell{
-  width:46px;height:46px;position:relative;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--rosso);border-radius:3px;
-}
-.cell.active{background:var(--bg-card)}
-.cell.active.in-word{background:#fce8e2}
-.cell.active input:focus{background:#f7c9bd}
-.cell.correct{background:var(--teal)!important}
-.cell.correct input{color:#fff!important}
-.cell.wrong{background:#ffb3b3!important}
-.cell.wrong input{color:var(--rosso-scuro)!important}
-.cell input{
-  width:100%;height:100%;border:none;background:transparent;
-  text-align:center;font-family:'Playfair Display',serif;
-  font-size:20px;font-weight:700;text-transform:uppercase;
-  color:var(--rosso);outline:none;caret-color:transparent;cursor:pointer;
-}
-.cell-num{
-  position:absolute;top:2px;left:3px;font-size:9px;font-weight:700;
-  color:var(--rosso);pointer-events:none;line-height:1;z-index:2;
-  font-family:'Inter',sans-serif;
-}
+.cw-grid{display:inline-grid;gap:0;margin-bottom:.9rem;position:relative}
+.cell{width:44px;height:44px;position:relative;display:flex;align-items:center;justify-content:center;background:transparent}
+.cell.active{background:var(--teal);border:2px solid #1a1a1a}
+.cell.active.in-word{background:#7fd3c4}
+.cell.active input:focus{background:#8de0d0}
+.cell.correct{background:#a8e6a0!important;border:2px solid #1a5c1a}
+.cell.wrong{background:#f5a0a0!important;border:2px solid #8b1a1a}
+.cell input{width:100%;height:100%;border:none;background:transparent;text-align:center;font-size:18px;font-weight:700;text-transform:uppercase;color:#1a1a1a;outline:none;caret-color:transparent;cursor:pointer}
+.cell-num{position:absolute;top:2px;left:3px;font-size:9px;font-weight:700;color:var(--rosso);pointer-events:none;line-height:1;z-index:2;font-family:'Inter',sans-serif}
 /* Responsive grid scale */
 @media(max-width:430px){
   .cw-grid{transform:scale(0.88);transform-origin:top center;margin-bottom:-.4rem}
