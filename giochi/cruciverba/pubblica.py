@@ -6,6 +6,7 @@ le soluzioni future non sono leggibili nel repo pubblico. Ogni venerdi GitHub Ac
 
 Uso: CRUCIVERBA_CHIAVE=... python3 pubblica.py
 """
+import hashlib
 import json
 import os
 import subprocess
@@ -51,10 +52,16 @@ def cifra(completi, chiave):
 
 
 def decifra():
-    if not os.environ.get("CRUCIVERBA_CHIAVE"):
+    chiave = os.environ.get("CRUCIVERBA_CHIAVE", "").strip()  # spazi o a capo incollati nel segreto
+    if not chiave:
         sys.exit("Manca la variabile CRUCIVERBA_CHIAVE")
-    out = subprocess.run(OPENSSL + ["-d"], input=ENC.read_bytes(), capture_output=True, check=True).stdout
-    return json.loads(out)
+    env = {**os.environ, "CRUCIVERBA_CHIAVE": chiave}
+    r = subprocess.run(OPENSSL + ["-d"], input=ENC.read_bytes(), env=env, capture_output=True)
+    if r.returncode:
+        # L'impronta non rivela la chiave ma permette di confrontarla con .chiave-cruciverba.
+        impronta = hashlib.sha256(chiave.encode()).hexdigest()[:8]
+        sys.exit(f"Decifratura fallita (chiave di {len(chiave)} caratteri, impronta {impronta}): {r.stderr.decode().strip()}")
+    return json.loads(r.stdout)
 
 
 if __name__ == "__main__":
