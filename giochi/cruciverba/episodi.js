@@ -59,5 +59,35 @@ const EPISODI = [
     "def": "Il grande fiume della Toscana che sfocia vicino a qui"
    }
   ]
+ },
+ {
+  "rows": 8,
+  "cols": 6,
+  "words": [
+   {
+    "word": "BATTISTA",
+    "row": 0,
+    "col": 2,
+    "dir": "V",
+    "num": 1,
+    "def": "Le formelle di Andrea da Pontedera raccontano la vita di San Giovanni ..."
+   },
+   {
+    "word": "COOP",
+    "row": 2,
+    "col": 0,
+    "dir": "V",
+    "num": 2,
+    "def": "Catena per cui la Crastan produce articoli a marchio, come Conad ed Esselunga"
+   },
+   {
+    "word": "PASQUA",
+    "row": 5,
+    "col": 0,
+    "dir": "H",
+    "num": 3,
+    "def": "Il giorno in cui i Bianchi, la confraternita dalle cappe bianche, distribuivano agnello e panini benedetti"
+   }
+  ]
  }
 ];
