@@ -89,5 +89,35 @@ const EPISODI = [
     "def": "Il giorno in cui i Bianchi, la confraternita dalle cappe bianche, distribuivano agnello e panini benedetti"
    }
   ]
+ },
+ {
+  "rows": 8,
+  "cols": 5,
+  "words": [
+   {
+    "word": "MARCONI",
+    "row": 0,
+    "col": 3,
+    "dir": "V",
+    "num": 1,
+    "def": "L'Iti di Pontedera che prenderà il nome del preside Robino"
+   },
+   {
+    "word": "SARTI",
+    "row": 3,
+    "col": 1,
+    "dir": "V",
+    "num": 2,
+    "def": "Mestiere di 19 sposi pontederesi tra il 1818 e il 1823"
+   },
+   {
+    "word": "BRUNI",
+    "row": 5,
+    "col": 0,
+    "dir": "H",
+    "num": 3,
+    "def": "Stefano ..., l'ispettore della Soprintendenza che seguì gli scavi"
+   }
+  ]
  }
 ];
