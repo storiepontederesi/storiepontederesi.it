@@ -119,5 +119,35 @@ const EPISODI = [
     "def": "Stefano ..., l'ispettore della Soprintendenza che seguì gli scavi"
    }
   ]
+ },
+ {
+  "rows": 7,
+  "cols": 7,
+  "words": [
+   {
+    "word": "MERCATO",
+    "row": 0,
+    "col": 1,
+    "dir": "V",
+    "num": 1,
+    "def": "Nel Seicento quello di Pontedera era così grande da intasare le strade"
+   },
+   {
+    "word": "ORVIETO",
+    "row": 2,
+    "col": 0,
+    "dir": "H",
+    "num": 2,
+    "def": "Andrea da Pontedera vi morì da capomaestro del Duomo"
+   },
+   {
+    "word": "ELISA",
+    "row": 2,
+    "col": 4,
+    "dir": "V",
+    "num": 3,
+    "def": "... Bonaparte, sorella di Napoleone, destinata a governare la Toscana"
+   }
+  ]
  }
 ];
